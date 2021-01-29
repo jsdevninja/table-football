@@ -17,3 +17,7 @@ docker-compose up --build
 
 4. You are good to go 🚀
    Frontend is running on localhost:8080 and backend is running on localhost:3000
+
+### Swagger Documentation
+
+localhost:3000/api/docs

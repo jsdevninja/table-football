@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const app = express();
 
@@ -26,6 +28,39 @@ db.sequelize.sync();
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to table-football backend application." });
 });
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Table Football Backend API with Swagger",
+      version: "0.1.0",
+      description: "Table Football Backend API Swagger Doc",
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "William Wang",
+        url: "https://www.linkedin.com/in/williamwang807",
+        email: "topit89807@gmail.com",
+      },
+    },
+    servers: [
+      {
+        url: "http://localhost:3000/api",
+      },
+    ],
+  },
+  apis: ["./app/routes/*.js"],
+};
+
+const specs = swaggerJsdoc(options);
+app.use(
+  "/api/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, { explorer: true })
+);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
