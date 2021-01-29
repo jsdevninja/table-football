@@ -1,2 +1,19 @@
 # table-football
-Dockerized react/node/postgresql app
+
+### Getting started:
+
+1. Clone the repo.
+2. Copy `.env.template` file into `.env`
+
+```
+cp .env.template .env
+```
+
+3. Spin up containers
+
+```
+docker-compose up --build
+```
+
+4. You are good to go 🚀
+   Frontend is running on localhost:8080 and backend is running on localhost:3000
