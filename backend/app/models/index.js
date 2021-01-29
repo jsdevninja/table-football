@@ -24,6 +24,10 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tests = require("./test.model.js")(sequelize, Sequelize);
+db.teams = require("./team.model.js")(sequelize, Sequelize);
+db.scores = require("./score.model.js")(sequelize, Sequelize);
+
+db.scores.belongsTo(db.teams, { foreignKey: "homeTeamId" });
+db.scores.belongsTo(db.teams, { foreignKey: "awayTeamId" });
 
 module.exports = db;

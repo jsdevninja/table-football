@@ -1,12 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
-  const Test = sequelize.define("test", {
-    title: {
+  const Team = sequelize.define("teams", {
+    name: {
       type: Sequelize.STRING,
     },
-    description: {
+    info: {
       type: Sequelize.STRING,
     },
   });
 
-  return Test;
+  return Team;
 };
