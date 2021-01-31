@@ -1,6 +1,10 @@
 # table-football
 
-### Getting started:
+### Local Dependencies
+
+- [Docker](https://docs.docker.com/compose/install/)
+
+### How to run this project:
 
 1. Clone the repo.
 2. Copy `.env.template` file into `.env`
