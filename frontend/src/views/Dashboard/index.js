@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, makeStyles } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { ROUTE_PATH } from "src/constants";
+import actions from "src/store/actions";
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -9,6 +11,16 @@ const useStyles = makeStyles(() => ({
 
 const Dashboard = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(actions.teamActions.getTeamsRequest());
+  }, []);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <div className={classes.root}>
