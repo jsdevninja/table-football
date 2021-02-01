@@ -95,6 +95,48 @@ router.post("/", scores.create);
 
 /**
  * @swagger
+ * /scores/{scoreId}:
+ *   put:
+ *     summary: Update a score record between two teams
+ *     tags: [Scores]
+ *     parameters:
+ *       - in: path
+ *         name: scoreId
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: Score ID(foreign key to Score)
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               score1:
+ *                 type: integer
+ *                 rerquired: true
+ *                 description: Score of home team
+ *               score2:
+ *                 type: integer
+ *                 rerquired: true
+ *                 description: Score of away team
+ *     responses:
+ *       "200":
+ *         description: Update score for existing match
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Score'
+ *       "400":
+ *         description: Match not found!
+ *       "500":
+ *         description: Error
+ */
+router.put("/:scoreId", scores.update);
+
+/**
+ * @swagger
  * /scores/{teamId}:
  *   get:
  *     summary: Shows statistics of the team
