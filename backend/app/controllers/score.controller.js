@@ -102,7 +102,7 @@ exports.getTeamStatistics = (req, res) => {
   })
     .then((data) => {
       const result = generateTeamStatistics(data, teamId);
-      res.send(result);
+      res.send({ statistic: result, data });
     })
     .catch((err) => {
       res.status(500).send({

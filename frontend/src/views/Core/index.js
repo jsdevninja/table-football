@@ -1,5 +1,6 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   createStyles,
   jssPreset,
@@ -11,6 +12,7 @@ import rtl from "jss-rtl";
 import { create } from "jss";
 
 import routes from "./routes";
+import LoadingScreen from "src/components/LoadingScreen";
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
@@ -47,10 +49,12 @@ const theme = createMuiTheme({
 
 const Core = () => {
   useStyles();
+  const isLoading = useSelector((state) => state.global.isLoading);
 
   return (
     <ThemeProvider theme={theme}>
       <StylesProvider jss={jss}>{routes}</StylesProvider>
+      {isLoading && <LoadingScreen />}
     </ThemeProvider>
   );
 };

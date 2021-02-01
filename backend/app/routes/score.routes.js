@@ -150,7 +150,7 @@ router.put("/:scoreId", scores.update);
  *         description: Team ID(foreign key to Team)
  *     responses:
  *       "200":
- *         description: Team statistics info
+ *         description: Team statistics and matches info
  *         content:
  *           application/json:
  *             schema:
