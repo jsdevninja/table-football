@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Box,
-  makeStyles,
-} from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
 import actions from "src/store/actions";
 import SelectTeam from "src/components/SelectTeam";
 import MatchesTable from "src/components/MatchesTable";
@@ -53,11 +43,6 @@ const TeamTeam = () => {
     const _form = { ...form };
     _form[name] = value;
     setForm(_form);
-  };
-
-  const getTeamName = (teamId) => {
-    const team = teams.find((team) => team.id === teamId);
-    return team ? team.name : "";
   };
 
   return (
